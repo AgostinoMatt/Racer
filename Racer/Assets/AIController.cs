@@ -20,6 +20,8 @@ public class AIController : MonoBehaviour
 
     float lastTimeMoving = 0;
 
+    CheckpointManager cpm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,8 +82,12 @@ public class AIController : MonoBehaviour
 
         if (Time.time > lastTimeMoving + 4)
         {
-            ds.rb.gameObject.transform.position = circuit.waypoints[currentTrackerWP].transform.position + Vector3.up * 2 + new Vector3(Random.Range(-1,1), 0, Random.Range(-1,1));
-            tracker.transform.position = ds.rb.gameObject.transform.position;
+            if (cpm == null)
+                cpm = ds.rb.GetComponent<CheckpointManager>();
+            ds.rb.gameObject.transform.position = cpm.lastCP.transform.position + Vector3.up * 2;
+            ds.rb.gameObject.transform.rotation = cpm.lastCP.transform.rotation;
+            //ds.rb.gameObject.transform.position = circuit.waypoints[currentTrackerWP].transform.position + Vector3.up * 2 + new Vector3(Random.Range(-1,1), 0, Random.Range(-1,1));
+            tracker.transform.position = cpm.lastCP.transform.position;
             ds.rb.gameObject.layer = 8;
             this.GetComponent<Ghost>().enabled = true;
             Invoke("ResetLayer", 3);

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - car
   - road
+  - HUD
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - Respawn
   - Track
-  - 
+  - Arrow
   - 
   - 
   - 
