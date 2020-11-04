@@ -26,6 +26,8 @@ public class DisplayLeaderboard : MonoBehaviour
         third.text = places[2];
         if (places.Count > 3)
         fourth.text = places[3];
+
+
         //Debug.Log("places ------------");
         //foreach (string s in places)
             //Debug.Log("places: " + s);

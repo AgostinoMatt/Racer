@@ -36,6 +36,7 @@ public class Drive : MonoBehaviour
     public GameObject playerNamePrefab;
     public Renderer carMesh;
 
+    public string networkName = "";
     string[] aiNames = { "Paul", "Ringo", "John", "George", "Steve" };
 
     public void StartSkidTrail(int i)
@@ -72,6 +73,9 @@ public class Drive : MonoBehaviour
         playerName.GetComponent<NameUIController>().target = rb.gameObject.transform;
 
         if (this.GetComponent<AIController>().enabled)
+            if (networkName != "")
+                playerName.GetComponent<Text>().text = networkName;
+        else
             playerName.GetComponent<Text>().text = aiNames[Random.Range(0, aiNames.Length)];
         else
         playerName.GetComponent<Text>().text = PlayerPrefs.GetString("PlayerName");
